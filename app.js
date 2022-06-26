@@ -11,7 +11,7 @@ var usersRouter = require("./routes/users");
 var app = express();
 AWS.config.update({
   region: "local",
-  endpoint: "https://stormy-atoll-87125.herokuapp.com:8000",
+  endpoint: "0.0.0.0:8000",
 });
 const docClient = new AWS.DynamoDB.DocumentClient();
 // view engine setup
