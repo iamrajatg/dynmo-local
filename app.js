@@ -28,6 +28,39 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
 // Get fingerprint record by id
+app.get("/createfingerprint", (req, res, next) => {
+  const params = {
+    TableName: "BrowserFingerprint",
+    KeySchema: [
+      { AttributeName: "fingerprint", KeyType: "HASH" }, //Partition key
+    ],
+    AttributeDefinitions: [
+      { AttributeName: "fingerprint", AttributeType: "S" },
+    ],
+    ProvisionedThroughput: {
+      ReadCapacityUnits: 5,
+      WriteCapacityUnits: 5,
+    },
+  };
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+  var dynamodb = new AWS.DynamoDB();
+  dynamodb.createTable(params, function (err, data) {
+    if (err) {
+      console.error(
+        "Unable to create table. Error JSON:",
+        JSON.stringify(err, null, 2)
+      );
+    } else {
+      console.log(
+        "Created table. Table description JSON:",
+        JSON.stringify(data, null, 2)
+      );
+    }
+  });
+});
+
+// Get fingerprint record by id
 app.get("/fingerprint", (req, res, next) => {
   const fingerprint = req.query.id;
   const params = {
