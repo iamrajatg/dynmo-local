@@ -11,7 +11,7 @@ var usersRouter = require("./routes/users");
 var app = express();
 AWS.config.update({
   region: "local",
-  endpoint: "0.0.0.0:8000",
+  endpoint: "http://0.0.0.0:8000",
 });
 const docClient = new AWS.DynamoDB.DocumentClient();
 // view engine setup
