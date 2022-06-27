@@ -76,7 +76,7 @@ app.get("/fingerprint", (req, res, next) => {
     if (err || !data.Items || !data.Items.length) {
       res.send({
         success: false,
-        message: "Error: Server error",
+        message: `Error: ${JSON.stringify(err)}`,
       });
     } else {
       console.log("data", data);
@@ -107,7 +107,7 @@ app.post("/fingerprint", (req, res, next) => {
     if (err) {
       res.send({
         success: false,
-        message: "Error: Server error",
+        message: `Error: ${JSON.stringify(err)}`,
       });
     } else {
       console.log("data", data);
@@ -140,7 +140,7 @@ app.delete("/fingerprint", (req, res, next) => {
       );
       res.send({
         success: false,
-        message: "Error: Server error",
+        message: `Error: ${JSON.stringify(err)}`,
       });
     } else {
       console.log("deleted");
