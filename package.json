@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "create-db": "cd dynamodb && node createFingerprintTable.js && cd ..",
+    "start-db": "aws configure set default.region local; aws configure set aws_access_key_id dunder; aws configure set aws_secret_access_key mifflin; cd DynamoDBLocal; ../jre/bin/java -Djava.library.path=./ -jar DynamoDBLocal.jar",
     "postinstall": "aws configure set default.region local; aws configure set aws_access_key_id dunder; aws configure set aws_secret_access_key mifflin; cd DynamoDBLocal; ../jre/bin/java -Djava.library.path=./ -jar DynamoDBLocal.jar",
     "postinstall:local": "aws configure set default.region local; aws configure set aws_access_key_id dunder; aws configure set aws_secret_access_key mifflin; cd ../../Downloads/dynamodb_local_latest; java -Djava.library.path=./ -jar DynamoDBLocal.jar -sharedDb"
   },
