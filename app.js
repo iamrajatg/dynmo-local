@@ -11,7 +11,7 @@ var usersRouter = require("./routes/users");
 var app = express();
 AWS.config.update({
   region: "local",
-  endpoint: "http://0.0.0.0:8000",
+  endpoint: "https://desolate-journey-13474.herokuapp.com",
 });
 const docClient = new AWS.DynamoDB.DocumentClient();
 // view engine setup
